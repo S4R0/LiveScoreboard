@@ -47,5 +47,17 @@ namespace LiveScoreboard.Tests
 
             Assert.True(finished);
         }
+
+        [Theory, MemberData(nameof(TestData))]
+        public void FinishGame_Deleted_False(string homeTeamName, string awayTeamName, DateTime startDate)
+        {
+            var match = _matchService.StartMatch(homeTeamName, awayTeamName, startDate);
+
+            Assert.NotNull(match);
+
+            var finished = _matchService.FinishGame(Guid.NewGuid());
+
+            Assert.False(finished);
+        }
     }
 }
