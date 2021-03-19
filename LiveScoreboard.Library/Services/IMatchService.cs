@@ -15,5 +15,7 @@ namespace LiveScoreboard.Library.Services
         Game StartMatch(string homeTeam, string awayTeam, DateTime startDate);
 
         bool FinishGame(Guid gameId);
+
+        Game UpdateScore(Guid gameId, int scoreHomeTeam, int scoreAwayTeam);
     }
 }

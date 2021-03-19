@@ -13,5 +13,10 @@
 
         public static Team NewTeam(string name) => new(name, 0);
 
+        public Team UpdateScore(int score)
+        {
+            Score = score;
+            return this;
+        }
     }
 }

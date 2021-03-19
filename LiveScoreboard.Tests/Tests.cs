@@ -59,5 +59,18 @@ namespace LiveScoreboard.Tests
 
             Assert.False(finished);
         }
+
+        [Theory, MemberData(nameof(TestData))]
+        public void UpdateScore_True(string homeTeamName, string awayTeamName, DateTime startDate)
+        {
+            var match = _matchService.StartMatch(homeTeamName, awayTeamName, startDate);
+
+            Assert.NotNull(match);
+
+            var updatedMatch = _matchService.UpdateScore(match.Id, 1, 0);
+
+            Assert.Equal(1, updatedMatch.HomeTeam.Score);
+            Assert.Equal(0, updatedMatch.AwayTeam.Score);
+        }
     }
 }

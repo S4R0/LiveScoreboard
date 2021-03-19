@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LiveScoreboard.Library.Models
 {
@@ -22,5 +18,13 @@ namespace LiveScoreboard.Library.Models
         }
 
         public static Game NewGame(string homeTeamName, string awayTeamName, DateTime startDate) => new(homeTeamName, awayTeamName, startDate);
+
+        public Game UpdateGameScore(int scoreHomeTeam, int scoreAwayTeam)
+        {
+            HomeTeam = HomeTeam.UpdateScore(scoreHomeTeam);
+            AwayTeam = AwayTeam.UpdateScore(scoreAwayTeam);
+
+            return this;
+        }
     }
 }
