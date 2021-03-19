@@ -8,6 +8,7 @@ namespace LiveScoreboard.Library.Models
         public Team HomeTeam { get; private set; }
         public Team AwayTeam { get; private set; }
         public DateTime StartDate { get; private set; }
+        public DateTime SystemDate { get; private set; }
 
         private Game(string homeTeamName, string awayTeamName, DateTime startDate)
         {
@@ -15,6 +16,7 @@ namespace LiveScoreboard.Library.Models
             HomeTeam = Team.NewTeam(homeTeamName);
             AwayTeam = Team.NewTeam(awayTeamName);
             StartDate = startDate;
+            SystemDate = DateTime.UtcNow;
         }
 
         public static Game NewGame(string homeTeamName, string awayTeamName, DateTime startDate) => new(homeTeamName, awayTeamName, startDate);
@@ -26,5 +28,7 @@ namespace LiveScoreboard.Library.Models
 
             return this;
         }
+
+        public int GameTotalScore() => HomeTeam.Score + AwayTeam.Score;
     }
 }

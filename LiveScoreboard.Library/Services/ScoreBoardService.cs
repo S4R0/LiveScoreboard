@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LiveScoreboard.Library.Services
 {
-    public class MatchService : IMatchService
+    public class ScoreBoardService : IScoreBoardService
     {
         private static readonly List<Game> _games = new();
 
@@ -26,5 +26,7 @@ namespace LiveScoreboard.Library.Services
 
             return game.UpdateGameScore(scoreHomeTeam, scoreAwayTeam);
         }
+
+        public List<Game> GamesSummary() => _games.OrderByDescending(x => x.GameTotalScore()).ThenByDescending(x => x.SystemDate).ToList();
     }
 }
