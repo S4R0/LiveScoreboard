@@ -16,5 +16,19 @@ namespace LiveScoreboard.Library.Services
 
             return game;
         }
+
+        public bool FinishGame(Guid gameId)
+        {
+            try
+            {
+                _games.RemoveAll(x => x.Id.Equals(gameId));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

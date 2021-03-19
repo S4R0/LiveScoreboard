@@ -13,5 +13,7 @@ namespace LiveScoreboard.Library.Services
         /// <param name="startDate">Start date of the match</param>
         /// <returns></returns>
         Game StartMatch(string homeTeam, string awayTeam, DateTime startDate);
+
+        bool FinishGame(Guid gameId);
     }
 }
