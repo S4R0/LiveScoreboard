@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LiveScoreboard.Library.Models
+﻿namespace LiveScoreboard.Library.Models
 {
     public class Team
     {
+        public string Name { get; set; }
+        public int Score { get; set; }
+
+        private Team(string name, int score)
+        {
+            Name = name;
+            Score = score;
+        }
+
+        public static Team NewTeam(string name) => new(name, 0);
+
     }
 }

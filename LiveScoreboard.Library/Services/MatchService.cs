@@ -1,12 +1,20 @@
-﻿using System;
+﻿using LiveScoreboard.Library.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LiveScoreboard.Library.Services
 {
-    public class MatchService
+    public class MatchService : IMatchService
     {
+        private static readonly List<Game> _games = new List<Game>();
+
+        public Game StartMatch(string homeTeamName, string awayTeamName, DateTime startDate)
+        {
+            var game = Game.NewGame(homeTeamName, awayTeamName, startDate);
+
+            _games.Add(game);
+
+            return game;
+        }
     }
 }
